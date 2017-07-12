@@ -1,5 +1,16 @@
-<h1>Lista app</h1>
-<br>
-<ul>
-  <li ng-for="value of username">{{value}}</li>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <input type="text" #serverName>
+      
+       <button class="btn btn-primary" (click)="onGet(serverName.value)">cargar usuarios</button>
+      <hr>
+      <ul class="list-group" *ngFor="let server of servers" style="color:red">
+        <li class="list-group-item" *ngIf="server.user.username=='carlospalomino'">{{ server.rank }} {{ server.user.display_name }} </li>
+      </ul>
+      <ul class="list-group" *ngFor="let server of servers">
+        <li class="list-group-item">{{ server.rank }} {{ server.user.display_name }} </li>
+      </ul>
+    </div>
+  </div>
+</div>
