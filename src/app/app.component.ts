@@ -16,6 +16,8 @@ import 'rxjs/Rx';
 
 export class AppComponent {
 servers: string[] = new Array();
+items = new Array();
+
 // constructor(http: Http){
 
 // 	http.get("https://wakatime.com/api/v1/leaders?page=2")
@@ -39,12 +41,25 @@ servers: string[] = new Array();
 	}
 
 	onGet(){
-		this.getServers(13)
+		  for(var i = 0; i <= 30; i++){
+  	
+this.getServers(i)
 		.subscribe(
-			(servers: any[])=>{this.servers =servers;
-			console.log(servers)},
+			(servers: string[])=>{this.servers =servers;
+				// console.log(this.servers );
+				 console.log(servers);
+				 const helperArray = [];
+        for (let key in servers) {
+          this.items.push(servers[key]);
+        };
+			// this.items.push(helperArray);
+			},
 			(error)=>console.log(error)
 			)
+    ;
+     
+  }
+		//console.log(this.items);
 
 
 	}
